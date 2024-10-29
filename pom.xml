@@ -71,7 +71,7 @@
 
     <repositories>
         <repository>
-            <id>deploymentRep</id>
+            <id>deploymentRepo</id>
             <url>http://192.168.50.4:8081/repository/deploymentRep/</url>
             <releases>
                 <enabled>true</enabled>
