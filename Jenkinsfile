@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'Github Checkout : ';
                 git branch : 'SelimLandolsi-5Arctic5-G5',
-                url :'https://github.com/ahmedzmerli/5Arctic5-G5-Foyer.git';
+                    credentialsId: 'git_cred',
+                    url :'https://github.com/ahmedzmerli/5Arctic5-G5-Foyer.git';
             }
         }
 
