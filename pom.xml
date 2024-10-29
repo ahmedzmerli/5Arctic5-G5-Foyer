@@ -64,15 +64,15 @@
 
     <distributionManagement>
         <repository>
-            <id>deploymentRep</id>
-            <url>http://192.168.50.4:8081/repository/deploymentRep/</url>
+            <id>deploymentRepo</id>
+            <url>http://192.168.50.4:8081/repository/deploymentRepo/</url>
         </repository>
     </distributionManagement>
 
     <repositories>
         <repository>
             <id>deploymentRepo</id>
-            <url>http://192.168.50.4:8081/repository/deploymentRep/</url>
+            <url>http://192.168.50.4:8081/repository/deploymentRepo/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
