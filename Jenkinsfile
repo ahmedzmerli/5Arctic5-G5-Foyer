@@ -35,6 +35,24 @@ pipeline {
                 }
             }
        }
+        stage('Deploy to Nexus') {
+            steps {
+                script {
+                    echo 'Deploying to Nexus...'
+                    sh '''
+                        mvn deploy:deploy-file \
+                        -DgroupId=tn.esprit.spring \
+                        -DartifactId=gestion-station-ski \
+                        -Dversion=1.0-SNAPSHOT \
+                        -Dpackaging=jar \
+                        -Dfile=target/gestion-station-ski-1.0-SNAPSHOT.jar \
+                        -DrepositoryId=nexus \
+                        -Durl=http://192.168.33.10:8081/repository/maven-snapshots/ \
+                        -s /var/lib/jenkins/.m2/settings.xml 
+                    '''
+                }
+            }
+        }
 
     }
 }
