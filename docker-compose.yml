@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mysql:8  # Use the MySQL image
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD:   # Set a root password
+      MYSQL_DATABASE: foyer
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+    ports:
+      - '3306:3306'  # Map host port 3306 to container port 3306 (default MySQL port)
+    volumes:
+      - mysql-data:/var/lib/mysql  # Use a named volume for MySQL data
+    networks:
+      - backend  
+
+  app:
+    build: .
+    image: sarra/springbootapp-devops_project:latest  # Changed image name
+    restart: always
+    container_name: springbootapp-devops_project  # Changed container name
+    ports:
+      - '8089:8089'  # Map host port 8085 to container port 8080
+    depends_on:
+      - db  # Change the dependency to match the db service name
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/stationSki  # Change JDBC URL for MySQL 
+      SPRING_DATASOURCE_USERNAME: root                       # Username to connect 
+      SPRING_DATASOURCE_PASSWORD:                        # Password to connect
+    networks:
+      - backend  
+
+volumes:
+  mysql-data:  # Name of the volume for MySQL data
+networks:
+  backend:  
