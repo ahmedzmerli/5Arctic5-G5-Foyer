@@ -57,8 +57,8 @@ pipeline {
                         -DrepositoryId=nexus \
                         -Dusername=admin \
                         -Dpassword=nexus \
-                        -Durl=http://localhost:8081/repository/maven-snapshots/ \
-                        -s /var/lib/jenkins/.m2/settings.xml 
+                        -Durl=http://192.168.33.10:8081/repository/maven-snapshots/ \
+                        -s /usr/share/maven/conf/settings.xml
                     '''
                 }
             }
