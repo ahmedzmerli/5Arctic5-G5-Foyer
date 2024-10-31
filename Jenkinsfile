@@ -52,9 +52,7 @@ pipeline {
                         -Dversion=1.0.0-SNAPSHOT \
                         -Dpackaging=jar \
                         -Dfile=target/tp-foyer-1.0.0-SNAPSHOT.jar \
-                        -DrepositoryId=nexus \
-                        -Dusername=admin \
-                        -Dpassword=nexus \
+                        -DrepositoryId=deploymentRepo \
                         -Durl=http://192.168.33.10:8081/repository/maven-snapshots/ \
                         -s /usr/share/maven/conf/settings.xml
                     '''
