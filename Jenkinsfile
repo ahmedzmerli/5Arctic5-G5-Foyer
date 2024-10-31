@@ -42,6 +42,9 @@ pipeline {
         }
         stage('Deploy to Nexus') {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'nexus-credentials-id', // Your Nexus credentials ID
+                                                 usernameVariable: 'NEXUS_USER', 
+                                                 passwordVariable: 'NEXUS_PASS')]) {
                 script {
                     echo 'Deploying to Nexus...'
                     sh '''
@@ -52,6 +55,8 @@ pipeline {
                         -Dpackaging=jar \
                         -Dfile=target/tp-foyer-1.0.0-SNAPSHOT.jar \
                         -DrepositoryId=nexus \
+                        -Dusername=admin \
+                        -Dpassword=nexus \
                         -Durl=http://localhost:8081/repository/maven-snapshots/ \
                         -s /var/lib/jenkins/.m2/settings.xml 
                     '''
@@ -60,4 +65,5 @@ pipeline {
         }
 
     }
+}
 }
