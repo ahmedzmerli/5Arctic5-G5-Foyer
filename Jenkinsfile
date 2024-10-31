@@ -42,9 +42,7 @@ pipeline {
         }
         stage('Deploy to Nexus') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'nexus-credentials-id', // Your Nexus credentials ID
-                                                 usernameVariable: 'NEXUS_USER', 
-                                                 passwordVariable: 'NEXUS_PASS')]) {
+                
                 script {
                     echo 'Deploying to Nexus...'
                     sh '''
@@ -66,4 +64,4 @@ pipeline {
 
     }
 }
-}
+
