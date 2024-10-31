@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the jar file into the container
-COPY target/gestion-station-ski-1.0-SNAPSHOT.jar app.jar
+COPY target/tp-foyer-1.0.0-SNAPSHOT.jar app.jar
 
 # Expose the port your app runs on
 EXPOSE 8089
