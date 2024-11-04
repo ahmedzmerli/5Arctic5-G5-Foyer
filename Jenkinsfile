@@ -83,5 +83,11 @@ pipeline {
         }
 
     }
+    post {
+        always {
+            // This publishes the JaCoCo coverage report after each build
+            jacoco()
+        }
+    }
 }
 
