@@ -90,6 +90,7 @@ pipeline {
             archiveArtifacts artifacts: 'target/site/jacoco/**/*.html', allowEmptyArchive: true
             // Optionally, you can also archive the exec file
             archiveArtifacts artifacts: 'target/jacoco.exec', allowEmptyArchive: true
+            jacoco()
         }
     }
 }
