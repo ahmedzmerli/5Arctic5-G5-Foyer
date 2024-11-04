@@ -18,10 +18,15 @@ pipeline {
             }
         }
 
-      stage('MVN Test') {
+        stage('MVN Test') {
             steps {
                 echo 'Test du Projet : ';
                 sh 'mvn test';
+            }
+        }
+        stage('JaCoCo Report') {
+            steps {
+                sh 'mvn jacoco:report'
             }
         }
        stage('SonarQube Analysis') {
@@ -35,11 +40,27 @@ pipeline {
                 }
             }
        }
-          stage('Build Application') {
+        stage('Build Application') {
             steps {
                 sh 'mvn package'
             }
         }
+        stage('Building Docker images') {
+            steps {
+                script {
+                    sh 'docker build -t sny445/foyer-testBuild-SelimLandolsi-5Arctic5:latest .'
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USER')]) {
+                    sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USER --password-stdin"
+                    sh 'docker push sny445/foyer-testBuild-SelimLandolsi-5Arctic5:latest'
+                    }
+                }
+            }
         stage('Deploy to Nexus') {
             steps {
                 
