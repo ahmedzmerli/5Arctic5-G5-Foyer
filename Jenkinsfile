@@ -48,7 +48,7 @@ pipeline {
         stage('Building Docker images') {
             steps {
                 script {
-                    sh 'docker build -t sny445/foyer-test_build-selim_landolsi-5Arctic5:latest .'
+                    sh 'docker build -t sny445/foyer-test_build-selim_landolsi-5arctic5:latest .'
                 }
             }
         }
@@ -57,7 +57,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USER')]) {
                     sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USER --password-stdin"
-                    sh 'docker push sny445/foyer-test_build-selim_landolsi-5Arctic5:latest'
+                    sh 'docker push sny445/foyer-test_build-selim_landolsi-5arctic5:latest'
                     }
                 }
             }
