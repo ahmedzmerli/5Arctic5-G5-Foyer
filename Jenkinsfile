@@ -26,7 +26,7 @@ pipeline {
         }
         stage('JaCoCo Report') {
             steps {
-                sh 'mvn jacoco:report'
+                jacoco execPattern: '**/target/jacoco.exec', classPattern: '**/target/classes', sourcePattern: '**/src/main/java'
             }
         }
        stage('SonarQube Analysis') {
