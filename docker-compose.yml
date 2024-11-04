@@ -15,7 +15,7 @@ services:
       - mynetwork
 
   app-foyer:
-    image: ahmedzmerli-5arctic5-g5  # Utilisation du nom d'image spécifié
+    image: ahmedzmerli/5arctic5-g5  # Utilisation du nom d'image spécifié
     container_name: app-foyer
     depends_on:
       - mysqldb
