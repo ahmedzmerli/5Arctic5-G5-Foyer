@@ -11,8 +11,8 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-    networks:
-      - mynetwork
+    #networks:
+      #- mynetwork
 
   app-foyer:
     image: ahmedzmerli/5arctic5-g5  # Utilisation du nom d'image spécifié
@@ -29,9 +29,9 @@ services:
               "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQLDialect",
               "spring.jpa.hibernate.ddl-auto": "update"
             }'
-    networks:
-      - mynetwork
-networks:
-  mynetwork:
+   # networks:
+      #- mynetwork
+#networks:
+  #mynetwork:
 volumes:
   db_data:
