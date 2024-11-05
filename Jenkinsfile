@@ -22,6 +22,18 @@ pipeline {
                 sh 'mvn package'
             }
         }
+
+         stage('SonarQube Analysis') {
+                    steps {
+                        script {
+                            def scannerHome = tool 'SQ scanner'
+                            withSonarQubeEnv {
+                                sh "${scannerHome}/bin/sonar-scanner -X"
+
+                            }
+                        }
+                    }
+               }
   stage('Deploy to Nexus') {
             steps {
 
