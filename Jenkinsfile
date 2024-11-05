@@ -20,7 +20,7 @@ pipeline {
          stage('Build Docker Image') {
                     steps {
                         echo 'Building Docker Image: ';
-                        sh 'docker build -t yourdockerhubusername/tp-foyer:1.0.0 .';
+                        sh 'docker build -t archen7/tp-foyer:1.0.0 .';
 }
 }
 }
