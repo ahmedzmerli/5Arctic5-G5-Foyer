@@ -17,7 +17,7 @@ FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
 # Copier le fichier JAR généré depuis l'étape de build
-COPY --from=build /app/target/tp-foyer-5.0.0.jar app.jar
+COPY --from=build /app/target/tp-foyer-5.1.0.jar app.jar
 
 EXPOSE 8089
 
