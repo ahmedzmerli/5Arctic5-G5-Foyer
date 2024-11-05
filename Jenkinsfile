@@ -17,5 +17,11 @@ pipeline {
                 sh 'mvn clean compile';
             }
         }
+         stage('Build Docker Image') {
+                    steps {
+                        echo 'Building Docker Image: ';
+                        sh 'docker build -t yourdockerhubusername/tp-foyer:1.0.0 .';
+}
+}
 }
 }
