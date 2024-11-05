@@ -18,11 +18,5 @@ pipeline {
             }
         }
 
-        stage('Maven Deploy') {
-            steps {
-                echo 'Deploying to Nexus Repository : ';
-                sh 'mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.168.50.4:8081/repository/maven-releases/';
-            }
-        }
-    }
+}
 }
