@@ -85,21 +85,25 @@ class ChambreServiceImplTest {
 
     @Test
     void testRecupererChambresSelonTyp() {
-        TypeChambre type = TypeChambre.SIMPLE;
+        TypeChambre type1 = TypeChambre.SIMPLE;
+        TypeChambre type2 = TypeChambre.DOUBLE;
         Chambre chambre1 = new Chambre();
-        chambre1.setTypeC(type);
+        chambre1.setTypeC(type1);
         Chambre chambre2 = new Chambre();
-        chambre2.setTypeC(type);
+        chambre2.setTypeC(type2);
+        Chambre chambre3 = new Chambre();
+        chambre1.setTypeC(type1);
 
-        List<Chambre> mockChambres = Arrays.asList(chambre1, chambre2);
+        List<Chambre> mockChambres = Arrays.asList(chambre1, chambre2, chambre3);
 
-        when(chambreRepository.findAllByTypeC(type)).thenReturn(mockChambres);
+        when(chambreRepository.findAllByTypeC(type1)).thenReturn(mockChambres);
 
-        List<Chambre> chambres = chambreService.recupererChambresSelonTyp(type);
+        List<Chambre> chambres = chambreService.recupererChambresSelonTyp(type1);
 
-        assertEquals(2, chambres.size());
-        assertEquals(type, chambres.get(0).getTypeC());
-        assertEquals(type, chambres.get(1).getTypeC());
-        verify(chambreRepository, times(1)).findAllByTypeC(type);
+        assertEquals(3, chambres.size());
+        assertEquals(type1, chambres.get(0).getTypeC());
+        assertEquals(type2, chambres.get(1).getTypeC());
+        assertEquals(type1, chambres.get(1).getTypeC());
+        verify(chambreRepository, times(1)).findAllByTypeC(type1);
     }
 }
