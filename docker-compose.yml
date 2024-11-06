@@ -44,7 +44,7 @@ services:
   front:
     image: souhail13/front:4
     ports:
-      - "86:86"
+      - "80:80"
 
 volumes:
   db :
