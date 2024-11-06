@@ -60,7 +60,7 @@ stage('Docker Compose Up') {
             steps {
                 echo 'Running Docker Compose to start services:'
                 script {
-                    sh 'docker-compose -f docker-compose.yml up -d'
+                    sh 'docker compose -f docker-compose.yml up -d'
                 }
             }
         }
