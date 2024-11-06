@@ -17,6 +17,15 @@ pipeline {
                 sh 'mvn clean compile';
             }
         }
+
+        stage('SonarQue') {
+                    steps {
+                        echo 'Analyse de la Qualité du Code : ';
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=235668Archen.';
+                    }
+                }
+
+
  stage('Build Application') {
             steps {
                 sh 'mvn package'
