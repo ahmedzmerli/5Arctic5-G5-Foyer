@@ -31,6 +31,26 @@ pipeline {
                 sh 'mvn package'
             }
         }
+ /stage('Building Docker Image') {
+              steps {
+                  echo 'Building Docker Image: '
+                  script {
+                      sh 'docker build -t archen7/tp-foyer:1.0.0 .'
+                  }
+              }
+          }
+
+          stage('Push Docker Image to DockerHub') {
+              steps {
+                  echo 'Pushing Docker Image to DockerHub: '
+                  script {
+                      withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USER')]) {
+                          sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USER --password-stdin"
+                          sh 'docker push archen7/tp-foyer:1.0.0'
+                      }
+                  }
+              }
+          }
 
 
   stage('Deploy to Nexus') {
