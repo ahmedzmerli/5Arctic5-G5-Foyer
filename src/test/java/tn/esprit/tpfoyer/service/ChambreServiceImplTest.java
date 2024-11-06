@@ -85,6 +85,7 @@ class ChambreServiceImplTest {
 
     @Test
     void testRecupererChambresSelonTyp() {
+
         TypeChambre type1 = TypeChambre.SIMPLE;
         TypeChambre type2 = TypeChambre.DOUBLE;
 
@@ -112,5 +113,6 @@ class ChambreServiceImplTest {
         verify(chambreRepository, times(1)).findAllByTypeC(type1);
         verify(chambreRepository, times(1)).findAllByTypeC(type2);
     }
+
 
 }
