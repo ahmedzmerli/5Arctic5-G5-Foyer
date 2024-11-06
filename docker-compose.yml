@@ -23,7 +23,7 @@ services:
       - 8089:8089  # Exposed port for your app
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/Devops?createDatabaseIfNotExist=true",
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/devopsarchen?createDatabaseIfNotExist=true",
         "spring.datasource.username" : "root",
         "spring.datasource.password" : "root",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",

@@ -57,6 +57,18 @@ pipeline {
             }
         }
 
+stage('Docker Compose Up') {
+    steps {
+        echo 'Starting Docker Compose...'
+        script {
+            // Ensure you are in the correct directory where docker-compose.yml is located
+            sh '''
+            echo "Running Docker Compose Up"
+            docker-compose -f docker-compose.yml up -d
+            '''
+        }
+    }
+}
   stage('Deploy to Nexus') {
             steps {
 
