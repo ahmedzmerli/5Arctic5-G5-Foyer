@@ -57,12 +57,7 @@ pipeline {
             }
         }
 
-stage('Docker Compose Up') {
-            steps {
-                echo 'Running Docker Compose Up'
-                sh 'docker-compose -f docker-compose.yml up -d'
-            }
-        }
+
   stage('Deploy to Nexus') {
             steps {
 
