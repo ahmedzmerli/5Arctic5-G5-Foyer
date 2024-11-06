@@ -17,7 +17,12 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-
+ stage('Unit Tests') {
+            steps {
+                echo 'Running Unit Tests: '
+                sh 'mvn test'  // This will run your unit tests (JUnit + Mockito)
+            }
+        }
         stage('SonarQue') {
             steps {
                 echo 'Analyse de la Qualité du Code : '
