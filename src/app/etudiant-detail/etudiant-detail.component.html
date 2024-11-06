@@ -1,0 +1,15 @@
+<div *ngIf="etudiant">
+  <h2>Détails de l'Étudiant</h2>
+
+  <p><strong>ID:</strong> {{ etudiant.idEtudiant }}</p>
+  <p><strong>Nom:</strong> {{ etudiant.nomEtudiant }}</p>
+  <p><strong>Prénom:</strong> {{ etudiant.prenomEtudiant }}</p>
+  <p><strong>CIN:</strong> {{ etudiant.cinEtudiant }}</p>
+  <p><strong>Date de Naissance:</strong> {{ etudiant.dateNaissance | date: 'dd/MM/yyyy' }}</p>
+
+  <button (click)="goBack()">Retour</button>
+</div>
+
+<div *ngIf="!etudiant">
+  <p>Chargement des détails de l'étudiant...</p>
+</div>

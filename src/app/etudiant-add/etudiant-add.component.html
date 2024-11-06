@@ -1,0 +1,35 @@
+<h2>Ajouter un Étudiant</h2>
+
+<form (ngSubmit)="addEtudiant()">
+  <div>
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" [(ngModel)]="etudiant.nomEtudiant" name="nomEtudiant" required />
+  </div>
+
+  <div>
+    <label for="prenom">Prénom:</label>
+    <input type="text" id="prenom" [(ngModel)]="etudiant.prenomEtudiant" name="prenomEtudiant" required />
+  </div>
+
+  <div>
+    <label for="cin">CIN:</label>
+    <input type="number" id="cin" [(ngModel)]="etudiant.cinEtudiant" name="cinEtudiant" required />
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="etudiant.emailEtudiant" name="emailEtudiant" required />
+  </div>
+
+  <div>
+    <label for="adresse">Adresse:</label>
+    <input type="text" id="adresse" [(ngModel)]="etudiant.adresseEtudiant" name="adresseEtudiant" required />
+  </div>
+
+  <div>
+    <label for="dateNaissance">Date de Naissance:</label>
+    <input type="date" id="dateNaissance" [(ngModel)]="etudiant.dateNaissance" name="dateNaissance" required />
+  </div>
+
+  <button type="submit">Ajouter l'Étudiant</button>
+</form>

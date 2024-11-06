@@ -1,0 +1,32 @@
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+  
+  .add-button-container {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+  }
+  
+  .btn-sm {
+    margin-right: 5px;
+  }
+  
