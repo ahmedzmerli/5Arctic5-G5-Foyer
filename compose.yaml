@@ -1,0 +1,45 @@
+version: '3.3'
+services:
+
+  prod_db:
+    image: mysql:9
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    volumes:
+      - prod:/var/lib/mysql
+
+  backend:
+    image: fj0161/devops:${PROJECT_VERSION}
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - prod_db
+    environment:
+      - PORT=${PORT}
+      - SPRING_DB_HOST=${SPRING_DB_HOST}
+      - SPRING_DB_NAME=${SPRING_DB_NAME}
+      - SPRING_DB_USER=${SPRING_DB_USER}
+      - SPRING_DB_PASSWORD=${SPRING_DB_PASSWORD}
+
+  prometheus:
+    depends_on:
+      - backend
+    image: prom/prometheus
+    volumes:
+      - "./prometheus.yaml:/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana-enterprise
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana:/var/lib/grafana
+
+volumes:
+  prod:
+  grafana:

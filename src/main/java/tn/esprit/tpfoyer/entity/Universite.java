@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.Objects;
+
 @Entity
 @Getter
 @Setter
@@ -11,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Universite {
 
     @Id
@@ -24,6 +27,18 @@ public class Universite {
     @OneToOne(cascade = CascadeType.ALL)
     Foyer foyer;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Universite that = (Universite) o;
+        return idUniversite == that.idUniversite;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(idUniversite);
+    }
 }
 
 

@@ -44,41 +44,11 @@ public class ChambreServiceImpl implements IChambreService {
         chambreRepository.deleteById(chambreId);
     }
 
-
-
-
-
-
-
     public List<Chambre> recupererChambresSelonTyp(TypeChambre tc)
     {
         return chambreRepository.findAllByTypeC(tc);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public Chambre trouverchambreSelonEtudiant(long cin) {
-       //
-
         return chambreRepository.trouverChselonEt(cin);
     }
 }

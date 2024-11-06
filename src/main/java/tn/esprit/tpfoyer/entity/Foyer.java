@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Foyer {
 
     @Id
