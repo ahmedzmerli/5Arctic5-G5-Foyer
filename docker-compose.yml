@@ -9,6 +9,8 @@ services:
       - MYSQL_DATABASE=Devops  # Database name as specified in your application.properties
     ports:
       - 3306:3306
+    networks:
+      - mynetwork
     volumes:
       - db:/var/lib/mysql
 
@@ -16,8 +18,6 @@ services:
     depends_on:
       - mysqldb
     image: archen7/tp-foyer:1.0.0  # Your Docker image on DockerHub
-    # Uncomment if you need to build the app locally before deployment
-    # build: .
     restart: on-failure
     ports:
       - 8089:8089  # Exposed port for your app
@@ -31,6 +31,12 @@ services:
       }'
     stdin_open: true
     tty: true
+    networks:
+      - mynetwork
 
 volumes:
   db:  # Named volume for MySQL data
+
+networks:
+  mynetwork:
+    driver: bridge  # Default driver, suitable for communication within the same host
