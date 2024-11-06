@@ -17,7 +17,7 @@ services:
 
   app:
     build: .
-    image: sarra/springbootapp-devops_project:latest  # Changed image name
+    image: sny445/foyer-test_build-selim_landolsi-5arctic5:latest  # Changed image name
     restart: always
     container_name: springbootapp-devops_project  # Changed container name
     ports:
@@ -25,7 +25,7 @@ services:
     depends_on:
       - db  # Change the dependency to match the db service name
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/stationSki  # Change JDBC URL for MySQL 
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer  # Change JDBC URL for MySQL
       SPRING_DATASOURCE_USERNAME: root                       # Username to connect 
       SPRING_DATASOURCE_PASSWORD:                        # Password to connect
     networks:
