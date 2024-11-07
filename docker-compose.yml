@@ -4,8 +4,7 @@ services:
     container_name: db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: foyer
       MYSQL_USER: sny
       MYSQL_PASSWORD: 0000
@@ -27,8 +26,8 @@ services:
       - db  # Change the dependency to match the db service name
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer  # Change JDBC URL for MySQL
-      SPRING_DATASOURCE_USERNAME: root                       # Username to connect 
-      SPRING_DATASOURCE_PASSWORD:                        # Password to connect
+      SPRING_DATASOURCE_USERNAME: sny                       # Username to connect 
+      SPRING_DATASOURCE_PASSWORD: 0000                   # Password to connect
     networks:
       - backend  
 
