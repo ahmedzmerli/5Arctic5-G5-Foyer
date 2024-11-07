@@ -2,12 +2,12 @@ pipeline {
   agent { label 'dev' }
 
   environment {
-    PROJECT_VERSION="1.0.10"
-    PORT=4001
+    PROJECT_VERSION="1.0.11"
+    PORT=4004
     SPRING_DB_NAME="prod"
     SPRING_DB_HOST="prod_db"
-    SPRING_DB_USER="root"
-    SPRING_DB_PASSWORD="root"
+    SPRING_DB_USER=credentials("SPRING_DB_USER")
+    SPRING_DB_PASSWORD=credentials("SPRING_DB_PASSWORD")
   }
 
   stages {
