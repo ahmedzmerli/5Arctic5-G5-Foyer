@@ -12,7 +12,8 @@ services:
       - '3306:3306'  # Map host port 3306 to container port 3306 (default MySQL port)
     volumes:
       - mysql-data:/var/lib/mysql  # Use a named volume for MySQL data
-     
+    networks:
+      - backend  
 
   app:
     build: .
@@ -27,7 +28,8 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer  # Change JDBC URL for MySQL
       SPRING_DATASOURCE_USERNAME: sny                       # Username to connect 
       SPRING_DATASOURCE_PASSWORD: 0000                   # Password to connect
-     
+    networks:
+      - backend  
   
   prometheus:
     image: prom/prometheus
@@ -37,7 +39,8 @@ services:
       - "9090:9090"
     depends_on:
       - app
-    
+    networks:
+      - backend 
 
 volumes:
   mysql-data:  # Name of the volume for MySQL data
