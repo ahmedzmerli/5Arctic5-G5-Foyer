@@ -30,6 +30,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: 0000                   # Password to connect
     networks:
       - backend  
+  
   prometheus:
     image: prom/prometheus
     volumes:
@@ -38,6 +39,9 @@ services:
       - "9090:9090"
     depends_on:
       - app
+    networks:
+      - backend 
+  
   grafana:
     image: grafana/grafana:latest
     ports:
@@ -46,7 +50,8 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=yourpassword  # Set an admin password
     depends_on:
       - prometheus
-
+    networks:
+      - backend 
 volumes:
   mysql-data:  # Name of the volume for MySQL data
 networks:
