@@ -33,12 +33,12 @@ services:
   prometheus:
     image: prom/prometheus
     volumes:
-      - ./app/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
     depends_on:
       - app
-      
+
 volumes:
   mysql-data:  # Name of the volume for MySQL data
 networks:
