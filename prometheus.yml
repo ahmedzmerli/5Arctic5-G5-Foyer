@@ -5,4 +5,4 @@ scrape_configs:
   - job_name: 'app-metrics'
     scrape_interval: 5s
     static_configs:
-      - targets: ['springbootapp-devops_project:8089']
+      - targets: ['app:8089']
