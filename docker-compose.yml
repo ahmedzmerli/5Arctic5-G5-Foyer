@@ -4,7 +4,8 @@ services:
     container_name: db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD:   # Set a root password
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: foyer
       MYSQL_USER: sny
       MYSQL_PASSWORD: 0000
