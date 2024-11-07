@@ -1,6 +1,11 @@
 pipeline {
     agent any
-
+    environment {
+                IMAGE_NAME = "${DOCKER_IMAGE}"  // Using the global variable defined in Jenkins
+            }
+    parameters {
+                choice(name: 'DEPLOYMENT_METHOD', choices: ['Docker Compose', 'Kubernetes'], description: 'Choose deployment method')
+    }
     stages {
         stage('Git') {
             steps {
@@ -82,6 +87,41 @@ pipeline {
                 }
             }
         }
+        /*stage('Deploy via Docker Compose') {
+                 steps {
+                        script {
+
+                            sh 'docker stop springbootapp-devops_project || true'
+                            sh 'docker rm springbootapp-devops_project || true'
+
+                            // Run the new container using Docker Compose
+                            sh 'docker-compose up -d'
+                        }
+                 }
+        }*/
+
+    stage('Deploy') {
+         steps {
+              script {
+                   if (params.DEPLOYMENT_METHOD == 'Docker Compose') {
+                   echo "Deploying with Docker Compose..."
+                   sh """
+                   docker-compose down
+                   IMAGE_NAME=${IMAGE_NAME} docker-compose up -d
+                   """
+                   } else if (params.DEPLOYMENT_METHOD == 'Kubernetes') {
+                   echo "Deploying to Kubernetes..."
+                   sh """
+                   kubectl set image deployment/foyer-deployment foyer-container=${IMAGE_NAME} --record
+                   kubectl rollout status deployment/foyer-deployment
+                   """
+                            }
+                        }
+                    }
+                }
+
+
+
 
     }
     post {
@@ -91,6 +131,7 @@ pipeline {
             // Optionally, you can also archive the exec file
             archiveArtifacts artifacts: 'target/jacoco.exec', allowEmptyArchive: true
             jacoco()
+            sh "docker rmi ${IMAGE_NAME} || true"
         }
     }
 }
