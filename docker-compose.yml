@@ -41,7 +41,17 @@ services:
       - app
     networks:
       - backend 
-
+  
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=yourpassword  # Set an admin password
+    depends_on:
+      - prometheus
+    networks:
+      - backend 
 volumes:
   mysql-data:  # Name of the volume for MySQL data
 networks:
