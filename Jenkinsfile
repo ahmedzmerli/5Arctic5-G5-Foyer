@@ -2,7 +2,7 @@ pipeline {
   agent { label 'dev' }
 
   environment {
-    PROJECT_VERSION="1.0.11"
+    PROJECT_VERSION="2.0.0"
     PORT=4004
     SPRING_DB_NAME="prod"
     SPRING_DB_HOST="prod_db"
