@@ -6,8 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD:   # Set a root password
       MYSQL_DATABASE: foyer
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 
+      MYSQL_USER: sny
+      MYSQL_PASSWORD: 0000
     ports:
       - '3306:3306'  # Map host port 3306 to container port 3306 (default MySQL port)
     volumes:
